@@ -60,7 +60,6 @@ jobs:
       # Copy Angular build to ASP.NET Core wwwroot
     - name: Copy Angular build to ASP.NET Core wwwroot
       run: |
-        rm -rf ./BankingSystem/ClientApp/BankingSystem/BankingSystem.Server/wwwroot/*
         cp -r ./BankingSystem/ClientApp/BankingSystem/bankingsystem.client/dist/bankingsystem.client/browser/* ./BankingSystem/ClientApp/BankingSystem/BankingSystem.Server/wwwroot/
 
     # Upload artifact for deploy step
