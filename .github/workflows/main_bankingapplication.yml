@@ -45,7 +45,7 @@ jobs:
     - name: Copy Angular build to ASP.NET Core wwwroot
       run: |
         rm -rf ./BankingSystem/ClientApp/BankingSystem/BankingSystem.Server/wwwroot/*
-        cp -r ./BankingSystem/ClientApp/BankingSystem/bankingsystem.client/dist/* ./BankingSystem/ClientApp/BankingSystem/BankingSystem.Server/wwwroot/
+        cp -r ./BankingSystem/ClientApp/BankingSystem/bankingsystem.client/dist/browser/* ./BankingSystem/ClientApp/BankingSystem/BankingSystem.Server/wwwroot/
 
     # Restore .NET dependencies
     - name: Restore .NET dependencies
