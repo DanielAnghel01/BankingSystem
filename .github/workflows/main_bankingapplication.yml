@@ -38,10 +38,6 @@ jobs:
       working-directory: ./BankingSystem
       run: dotnet publish BankingSystem.sln --configuration Release --output ./publish
 
-    - name: Copy Angular build to publish folder
-      run: |
-        cp -r ./BankingSystem/ClientApp/dist/* ./BankingSystem/publish/wwwroot/
-
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v4
       with:
