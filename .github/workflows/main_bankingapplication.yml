@@ -24,23 +24,13 @@ jobs:
       working-directory: ./BankingSystem
       run: dotnet restore BankingSystem.sln
 
-    - name: Build Angular app
-      working-directory: ./BankingSystem/ClientApp/BankingSystem/bankingsystem.client
-      run: |
-        npm install
-        npm run build --prod
-
     - name: Build .NET app
-      working-directory: ./BankingSystem
+      working-directory: ./BankingSystem/ClientApp/BankingSystem/BankingSystem.Server
       run: dotnet build BankingSystem.sln --configuration Release --no-restore
 
     - name: Publish .NET app
-      working-directory: ./BankingSystem
-      run: dotnet publish BankingSystem.sln --configuration Release --output ./publish
-
-    - name: Copy Angular build to publish folder
-      run: |
-        cp -r ./BankingSystem/ClientApp/BankingSystem/bankingsystem.client/dist/* ./BankingSystem/publish/wwwroot/
+      working-directory: ./BankingSystem/ClientApp/BankingSystem/BankingSystem.Server
+      run: dotnet publish BankingSystem.Server.csproj --configuration Release --output ./publish
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v4
