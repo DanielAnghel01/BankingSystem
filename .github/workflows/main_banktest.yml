@@ -24,7 +24,7 @@ jobs:
           dotnet-version: '9.x'
 
       - name: Build with dotnet
-        run: dotnet build BankingSystem.sln --configuration Release
+        run: dotnet build ./BankingSystem/ClientApp/BankingSystem/BankingSystem.Server.csproj --configuration Release
 
       - name: dotnet publish
         run: dotnet publish BankingSystem.sln -c Release -o ${{env.DOTNET_ROOT}}
