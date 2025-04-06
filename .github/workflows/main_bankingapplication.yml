@@ -21,30 +21,31 @@ jobs:
       with:
         dotnet-version: '9.0.x'
 
-    # Set up Node.js and Angular CLI
+    # Set up Node.js
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
         node-version: 18
 
+    # Install Angular CLI (optional if you use global)
     - name: Install Angular CLI
       run: npm install -g @angular/cli
 
     # Install Angular dependencies
     - name: Install Angular dependencies
-      working-directory: ./BankingSystem/ClientApp
+      working-directory: ./BankingSystem/ClientApp/BankingSystem/bankingsystem.client
       run: npm install
 
-    # Build Angular
+    # Build Angular app
     - name: Build Angular app
-      working-directory: ./BankingSystem/ClientApp
+      working-directory: ./BankingSystem/ClientApp/BankingSystem/bankingsystem.client
       run: ng build --configuration production
 
     # Copy Angular build to ASP.NET Core wwwroot
     - name: Copy Angular build to ASP.NET Core wwwroot
       run: |
         rm -rf ./BankingSystem/ClientApp/BankingSystem/BankingSystem.Server/wwwroot/*
-        cp -r ./BankingSystem/ClientApp/dist/* ./BankingSystem/ClientApp/BankingSystem/BankingSystem.Server/wwwroot/
+        cp -r ./BankingSystem/ClientApp/BankingSystem/bankingsystem.client/dist/* ./BankingSystem/ClientApp/BankingSystem/BankingSystem.Server/wwwroot/
 
     # Restore .NET dependencies
     - name: Restore .NET dependencies
@@ -61,7 +62,7 @@ jobs:
       working-directory: ./BankingSystem/ClientApp/BankingSystem/BankingSystem.Server
       run: dotnet publish BankingSystem.Server.csproj --configuration Release --output ./publish
 
-    # Upload for deploy step
+    # Upload artifact for deploy step
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v4
       with:
