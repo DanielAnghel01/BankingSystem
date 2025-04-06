@@ -1,0 +1,16 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "ClientApp\\BankingSystem\\BankingSystem.Server\\BankingSystem.Server.csproj",
+        "Action": "Start",
+        "DebugTarget": "https"
+      },
+      {
+        "Path": "ClientApp\\BankingSystem\\bankingsystem.client\\bankingsystem.client.esproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
